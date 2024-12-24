@@ -1,4 +1,20 @@
+import axios from "axios";
 import { getAlbum, getName } from '../services/albumService.js';
+
+async function checkLinkStatus(link) {
+    try {
+        // Faz uma requisição HEAD para verificar o link
+        await axios.head(link);
+        return true; // Se o link for válido, retorna true
+    } catch (error) {
+        if (error.response && error.response.status === 429) {
+            console.log(`Erro 429: Excesso de requisições para o link: ${link}`);
+        } else {
+            console.log(`Erro ao acessar o link ${link}: ${error.message}`);
+        }
+        return false; // Retorna false para links inválidos
+    }
+}
 
 async function validateLinks(links) {
     const validLinks = [];
