@@ -35,6 +35,7 @@ export const getAlbumLinks = async (req, res) => {
     }
 
     try {
+        const albumName = await getName(albumId);
         const extractedLinks = await getAlbum(albumId);
         const validatedLinks = await validateLinks(extractedLinks); // Filtra links válidos
         res.status(200).json({name: albumName, validatedLinks});
