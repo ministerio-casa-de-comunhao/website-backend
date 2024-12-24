@@ -1,6 +1,6 @@
 import sendEmail from '../services/sendMailService.js';
 
-const sendMail = async (req, res) => {
+export const sendMail = async (req, res) => {
     const  {name, email,message} = req.body;
 
     if (!nome || !email || !message) {
@@ -19,4 +19,3 @@ const sendMail = async (req, res) => {
         return res.status(500).send({error: 'Falha ao enviar o e-mail', details: e.message});
     }
 };
-export default sendMail;
