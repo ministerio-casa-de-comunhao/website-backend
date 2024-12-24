@@ -24,7 +24,7 @@ export const initializeDatabase = async () => {
         CREATE TABLE IF NOT EXISTS lives (
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
-            link TEXT NOT NULL,
+            link TEXT NOT NULL
         )
     `);
 
