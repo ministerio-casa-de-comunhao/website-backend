@@ -34,14 +34,10 @@ export const getLivesFromYouTube = async () => {
             });
 
             const liveVideos = response.data.items.map(video => {
-                const rawDate = video.snippet.publishedAt; // Data ISO 8601
-                const formattedDate = format(new Date(rawDate), 'dd/MM/yyyy HH:mm'); // Formata para "30/10/2024 22:46"
-
                 return {
                     id: video.id.videoId,
                     title: video.snippet.title,
                     link: `https://www.youtube.com/watch?v=${video.id.videoId}`,
-                    date: formattedDate,
                 };
             });
 

@@ -25,7 +25,6 @@ export const initializeDatabase = async () => {
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
             link TEXT NOT NULL,
-            date TEXT NOT NULL
         )
     `);
 
@@ -39,9 +38,9 @@ export const storeLiveVideos = async (liveVideos) => {
     }
 
     // Insere os vídeos no banco de dados
-    const insertQuery = 'INSERT OR REPLACE INTO lives (id, title, link, date) VALUES (?, ?, ?, ?)';
+    const insertQuery = 'INSERT OR REPLACE INTO lives (id, title, link) VALUES (?, ?, ?)';
     const insertPromises = liveVideos.map(video =>
-        db.run(insertQuery, video.id, video.title, video.link, video.date)
+        db.run(insertQuery, video.id, video.title, video.link)
     );
 
     // Aguardar a inserção dos dados
