@@ -1,5 +1,15 @@
 import { getAlbum, getName } from '../services/albumService.js';
 
+async function validateLinks(links) {
+    const validLinks = [];
+    for (const link of links) {
+        if (await checkLinkStatus(link)) {
+            validLinks.push(link); // Adiciona ao array apenas os links válidos
+        }
+    }
+    return validLinks;
+}
+
 // Controlador para buscar links do álbum
 export const getAlbumLinks = async (req, res) => {
     const albumId = req.params.id;
